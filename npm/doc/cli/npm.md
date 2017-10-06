@@ -1,5 +1,5 @@
-npm(1) -- javascript package manager
-====================================
+npm(1) -- node package manager
+==============================
 
 ## SYNOPSIS
 
@@ -31,22 +31,6 @@ Use `npm install blerg` to install the latest version of "blerg".  Check out
 Use the `npm search` command to show everything that's available.
 Use `npm ls` to show everything you've installed.
 
-## DEPENDENCIES
-
-If a package references to another package with a git URL, npm depends
-on a preinstalled git.
-
-If one of the packages npm tries to install is a native node module and
-requires compiling of C++ Code, npm will use
-[node-gyp](https://github.com/TooTallNate/node-gyp) for that task.
-For a Unix system, [node-gyp](https://github.com/TooTallNate/node-gyp)
-needs Python, make and a buildchain like GCC. On Windows,
-Python and Microsoft Visual Studio C++ are needed. Python 3 is
-not supported by [node-gyp](https://github.com/TooTallNate/node-gyp).
-For more information visit
-[the node-gyp repository](https://github.com/TooTallNate/node-gyp) and
-the [node-gyp Wiki](https://github.com/TooTallNate/node-gyp/wiki).
-
 ## DIRECTORIES
 
 See `npm-folders(5)` to learn about where npm puts stuff.
@@ -61,7 +45,7 @@ In particular, npm has two modes of operation:
   defaults to the current working directory.  Packages are installed to
   `./node_modules`, and bins are installed to `./node_modules/.bin`.
 
-Local mode is the default.  Use `-g` or `--global` on any command to
+Local mode is the default.  Use `--global` or `-g` on any command to
 operate in global mode instead.
 
 ## DEVELOPER USAGE
@@ -127,18 +111,20 @@ Patches welcome!
 Contributors are listed in npm's `package.json` file.  You can view them
 easily by doing `npm view npm contributors`.
 
-If you would like to contribute, but don't know what to work on, read
-the contributing guidelines and check the issues list.
+If you would like to contribute, but don't know what to work on, check
+the issues list or ask on the mailing list.
 
-* https://github.com/npm/npm/wiki/Contributing-Guidelines
-* <https://github.com/npm/npm/issues>
+* <http://github.com/npm/npm/issues>
+* <npm-@googlegroups.com>
 
 ## BUGS
 
 When you find issues, please report them:
 
 * web:
-  <https://github.com/npm/npm/issues>
+  <http://github.com/npm/npm/issues>
+* email:
+  <npm-@googlegroups.com>
 
 Be sure to include *all* of the output from the npm command that didn't work
 as expected.  The `npm-debug.log` file is also helpful to provide.
@@ -156,6 +142,7 @@ will no doubt tell you to put the output in a gist or email.
 ## SEE ALSO
 
 * npm-help(1)
+* npm-faq(7)
 * README
 * package.json(5)
 * npm-install(1)
@@ -163,3 +150,4 @@ will no doubt tell you to put the output in a gist or email.
 * npm-config(7)
 * npmrc(5)
 * npm-index(7)
+* npm(3)

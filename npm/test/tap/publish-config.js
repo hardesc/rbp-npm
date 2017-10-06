@@ -13,23 +13,19 @@ fs.writeFileSync(pkg + '/package.json', JSON.stringify({
   publishConfig: { registry: common.registry }
 }), 'utf8')
 
-fs.writeFileSync(pkg + '/fixture_npmrc',
-  '//localhost:1337/:email = fancy@feast.net\n' +
-  '//localhost:1337/:username = fancy\n' +
-  '//localhost:1337/:_password = ' + new Buffer('feast').toString('base64') + '\n' +
-  'registry = http://localhost:1337/')
+var spawn = require('child_process').spawn
+var npm = require.resolve('../../bin/npm-cli.js')
+var node = process.execPath
 
 test(function (t) {
   var child
-  t.plan(4)
   require('http').createServer(function (req, res) {
     t.pass('got request on the fakey fake registry')
+    t.end()
     this.close()
     res.statusCode = 500
-    res.end(JSON.stringify({
-      error: 'sshhh. naptime nao. \\^O^/ <(YAWWWWN!)'
-    }))
-    child.kill('SIGINT')
+    res.end('{"error":"sshhh. naptime nao. \\^O^/ <(YAWWWWN!)"}')
+    child.kill()
   }).listen(common.port, function () {
     t.pass('server is listening')
 
@@ -40,20 +36,16 @@ test(function (t) {
     // itself functions normally.
     //
     // Make sure that we don't sit around waiting for lock files
-    child = common.npm(['publish', '--userconfig=' + pkg + '/fixture_npmrc'], {
+    child = spawn(node, [npm, 'publish', '--email=fancy', '--_auth=feast'], {
       cwd: pkg,
-      stdio: 'inherit',
       env: {
-        'npm_config_cache_lock_stale': 1000,
-        'npm_config_cache_lock_wait': 1000,
+        npm_config_cache_lock_stale: 1000,
+        npm_config_cache_lock_wait: 1000,
         HOME: process.env.HOME,
         Path: process.env.PATH,
         PATH: process.env.PATH,
         USERPROFILE: osenv.home()
       }
-    }, function (err, code) {
-      t.ifError(err, 'publish command finished successfully')
-      t.notOk(code, 'npm install exited with code 0')
     })
   })
 })

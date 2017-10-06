@@ -1,0 +1,36 @@
+{
+  "name": "passport-fitbit-oauth2",
+  "version": "1.0.1",
+  "description": "An OAuth2 passport strategy for Fitbit",
+  "main": "lib/index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "passport-oauth2": "^1.1.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thegameofcode/passport-fitbit-oauth2.git"
+  },
+  "keywords": [
+    "passport",
+    "fitbit",
+    "oauth2"
+  ],
+  "author": {
+    "name": "Gustavo Marin"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thegameofcode/passport-fitbit-oauth2/issues"
+  },
+  "homepage": "https://github.com/thegameofcode/passport-fitbit-oauth2#readme",
+  "readme": "# Passport strategy for Fitbit OAuth 2.0\n\n[Passport](http://passportjs.org/) strategies for authenticating with [Fitbit](http://www.fitbit.com/)\nusing ONLY OAuth 2.0.\n\nThis module lets you authenticate using Fitbit in your Node.js [Express](http://expressjs.com/) (or [Connect](http://www.senchalabs.org/connect/)) server applications. \n\n\n## Install\n\n    $ npm install passport-fitbit-oauth2\n\n## Usage of OAuth 2.0\n\n#### Configure Strategy\n\nThe Fitbit OAuth 2.0 authentication strategy requires a `verify` callback, which\naccepts these credentials and calls `done` providing a user, as well as\n`options` specifying a client ID, client secret, and callback URL.\n\n```\nvar FitbitStrategy = require( 'passport-fitbit-oauth2' ).Strategy;\n\npassport.use(new FibitStrategy({\n    clientID:     FITBIT_CLIENT_ID,\n    clientSecret: FITBIT_CLIENT_SECRET,\n    callbackURL: \"http://yourdormain:3000/auth/fitbit/callback\"\n  },\n  function(accessToken, refreshToken, profile, done) {\n    User.findOrCreate({ fitbitId: profile.id }, function (err, user) {\n      return done(err, user);\n    });\n  }\n));\n```\n\n#### Authenticate Requests\n\nUse `passport.authenticate()`, specifying the `'fitbit'` strategy, to\nauthenticate requests.\n\nFor example, as route middleware in an [Express](http://expressjs.com/)\napplication:\n\n```\napp.get('/auth/fitbit',\n  passport.authenticate('fitbit', { scope: ['activity','heartrate','location','profile'] }\n));\n\napp.get( '/auth/fitbit/callback', passport.authenticate( 'fitbit', { \n        successRedirect: '/auth/fitbit/success',\n        failureRedirect: '/auth/fitbit/failure'\n}));\n```\n",
+  "readmeFilename": "README.md",
+  "_id": "passport-fitbit-oauth2@1.0.1",
+  "_shasum": "edc0494ba436c6cd57d7b23d9fbb28517bbf92e6",
+  "_from": "passport-fitbit-oauth2@",
+  "_resolved": "https://registry.npmjs.org/passport-fitbit-oauth2/-/passport-fitbit-oauth2-1.0.1.tgz"
+}

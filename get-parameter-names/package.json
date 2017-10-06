@@ -1,68 +1,20 @@
 {
-  "_args": [
-    [
-      "get-parameter-names",
-      "C:\\code\\node"
-    ]
-  ],
-  "_from": "get-parameter-names@*",
-  "_id": "get-parameter-names@0.3.0",
-  "_inCache": true,
-  "_installable": true,
-  "_location": "/get-parameter-names",
-  "_nodeVersion": "4.4.0",
-  "_npmOperationalInternal": {
-    "host": "packages-13-west.internal.npmjs.com",
-    "tmp": "tmp/get-parameter-names-0.3.0.tgz_1458684478659_0.9605482146143913"
-  },
-  "_npmUser": {
-    "email": "josh@goatslacker.com",
-    "name": "goatslacker"
-  },
-  "_npmVersion": "2.14.20",
-  "_phantomChildren": {},
-  "_requested": {
-    "name": "get-parameter-names",
-    "raw": "get-parameter-names",
-    "rawSpec": "",
-    "scope": null,
-    "spec": "*",
-    "type": "range"
-  },
-  "_requiredBy": [
-    "#USER"
-  ],
-  "_resolved": "https://registry.npmjs.org/get-parameter-names/-/get-parameter-names-0.3.0.tgz",
-  "_shasum": "2d2237cd592e6c5b859ab2efdab435f008e5bb97",
-  "_shrinkwrap": null,
-  "_spec": "get-parameter-names",
-  "_where": "C:\\code\\node",
+  "name": "get-parameter-names",
   "author": {
-    "email": "josh@goatslacker.com",
-    "name": "Josh Perez"
+    "name": "Josh Perez",
+    "email": "josh@goatslacker.com"
+  },
+  "version": "0.2.0",
+  "description": "Retrieves parameter names from a function",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goatslacker/get-parameter-names.git"
   },
   "bugs": {
     "url": "https://github.com/goatslacker/get-parameter-names/issues"
   },
-  "dependencies": {},
-  "description": "Retrieves parameter names from a function",
-  "devDependencies": {
-    "chai": "~1.8.1",
-    "mocha": "~1.14.0"
-  },
-  "directories": {},
-  "dist": {
-    "shasum": "2d2237cd592e6c5b859ab2efdab435f008e5bb97",
-    "tarball": "https://registry.npmjs.org/get-parameter-names/-/get-parameter-names-0.3.0.tgz"
-  },
-  "engines": {
-    "node": ">= 0.4.0"
-  },
-  "files": [
-    "index.js"
-  ],
-  "gitHead": "3ac003ddc623ad6456a95e4a2480b142f06d7931",
-  "homepage": "https://github.com/goatslacker/get-parameter-names",
+  "main": "index.js",
   "keywords": [
     "argument",
     "function",
@@ -70,23 +22,24 @@
     "parameter",
     "parse"
   ],
-  "license": "MIT",
-  "main": "index.js",
-  "maintainers": [
-    {
-      "name": "goatslacker",
-      "email": "josh@goatslacker.com"
-    }
-  ],
-  "name": "get-parameter-names",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/goatslacker/get-parameter-names.git"
-  },
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.3.0"
+  "files": [
+    "index.js"
+  ],
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.14.0",
+    "chai": "~1.8.1"
+  },
+  "readme": "[![Build Status](https://secure.travis-ci.org/goatslacker/get-parameter-names.png)](http://travis-ci.org/goatslacker/get-parameter-names)\n[![NPM version](https://badge.fury.io/js/get-parameter-names.png)](http://badge.fury.io/js/get-parameter-names)\n[![Dependency Status](https://david-dm.org/goatslacker/get-parameter-names.png)](https://david-dm.org/goatslacker/get-parameter-names)\n\nget-parameter-names\n===================\n\nRetrieves the argument names of a function\n\n## Install\n\n```\nnpm install get-parameter-names\n```\n\n## Usage\n\n```js\nfunction foo(bar, baz) {\n  return bar + baz\n}\n\nvar get = require('get-parameter-names')\nget(foo) // = ['bar', 'baz']\n```\n\n\n## Tests\n\n```\nnpm test\n```\n\n## License\n\n[MIT](http://josh.mit-license.org)\n",
+  "readmeFilename": "README.md",
+  "homepage": "https://github.com/goatslacker/get-parameter-names",
+  "_id": "get-parameter-names@0.2.0",
+  "_shasum": "a2163ad092e350d94bee2958974fcece1bc53c99",
+  "_from": "get-parameter-names@",
+  "_resolved": "https://registry.npmjs.org/get-parameter-names/-/get-parameter-names-0.2.0.tgz"
 }

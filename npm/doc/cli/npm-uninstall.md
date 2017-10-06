@@ -1,11 +1,10 @@
-npm-uninstall(1) -- Remove a package
+npm-rm(1) -- Remove a package
 =============================
 
 ## SYNOPSIS
 
-    npm uninstall [<@scope>/]<pkg>[@<version>]... [-S|--save|-D|--save-dev|-O|--save-optional]
-
-    aliases: remove, rm, r, un, unlink
+    npm uninstall <name> [--save|--save-dev|--save-optional]
+    npm rm (with any of the previous argument usage)
 
 ## DESCRIPTION
 
@@ -22,21 +21,15 @@ it uninstalls the current package context as a global package.
 `npm uninstall` takes 3 exclusive, optional flags which save or update
 the package version in your main package.json:
 
-* `-S, --save`: Package will be removed from your `dependencies`.
+* `--save`: Package will be removed from your `dependencies`.
 
-* `-D, --save-dev`: Package will be removed from your `devDependencies`.
+* `--save-dev`: Package will be removed from your `devDependencies`.
 
-* `-O, --save-optional`: Package will be removed from your `optionalDependencies`.
-
-Further, if you have an `npm-shrinkwrap.json` then it will be updated as
-well.
-
-Scope is optional and follows the usual rules for `npm-scope(7)`.
+* `--save-optional`: Package will be removed from your `optionalDependencies`.
 
 Examples:
 
     npm uninstall sax --save
-    npm uninstall @myorg/privatepackage --save
     npm uninstall node-tap --save-dev
     npm uninstall dtrace-provider --save-optional
 

@@ -3,7 +3,7 @@ npm-explore(1) -- Browse an installed package
 
 ## SYNOPSIS
 
-    npm explore <pkg> [ -- <cmd>]
+    npm explore <name>[@<version>] [ -- <cmd>]
 
 ## DESCRIPTION
 
@@ -32,6 +32,7 @@ The shell to run for the `npm explore` command.
 
 ## SEE ALSO
 
+* npm-submodule(1)
 * npm-folders(5)
 * npm-edit(1)
 * npm-rebuild(1)

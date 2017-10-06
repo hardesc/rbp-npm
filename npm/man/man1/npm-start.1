@@ -1,34 +1,37 @@
-.TH "NPM\-START" "1" "November 2016" "" ""
+.\" Generated with Ronnjs 0.3.8
+.\" http://github.com/kapouer/ronnjs/
+.
+.TH "NPM\-START" "1" "May 2014" "" ""
+.
 .SH "NAME"
-\fBnpm-start\fR \- Start a package
-.SH SYNOPSIS
-.P
-.RS 2
+\fBnpm-start\fR \-\- Start a package
+.
+.SH "SYNOPSIS"
+.
 .nf
-npm start [\-\- <args>]
+npm start <name>
+.
 .fi
-.RE
-.SH DESCRIPTION
-.P
-This runs an arbitrary command specified in the package's \fB"start"\fP property of
-its \fB"scripts"\fP object\. If no \fB"start"\fP property is specified on the
-\fB"scripts"\fP object, it will run \fBnode server\.js\fP\|\.
-.P
-As of \fBnpm@2\.0\.0\fP \fIhttp://blog\.npmjs\.org/post/98131109725/npm\-2\-0\-0\fR, you can
-use custom arguments when executing scripts\. Refer to npm help run\-script for
-more details\.
-.SH SEE ALSO
-.RS 0
-.IP \(bu 2
+.
+.SH "DESCRIPTION"
+This runs a package\'s "start" script, if one was provided\.
+.
+.SH "SEE ALSO"
+.
+.IP "\(bu" 4
 npm help run\-script
-.IP \(bu 2
-npm help 7 scripts
-.IP \(bu 2
+.
+.IP "\(bu" 4
+npm help  scripts
+.
+.IP "\(bu" 4
 npm help test
-.IP \(bu 2
+.
+.IP "\(bu" 4
 npm help restart
-.IP \(bu 2
+.
+.IP "\(bu" 4
 npm help stop
-
-.RE
+.
+.IP "" 0
 

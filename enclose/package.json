@@ -1,0 +1,39 @@
+{
+  "name": "enclose",
+  "version": "1.1.0",
+  "description": "Compile your Node.js project into an executable",
+  "bin": {
+    "enclose": "bin/enclose.js"
+  },
+  "main": "bin/enclose.js",
+  "scripts": {
+    "postinstall": "node postinstall.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/igorklopov/enclose.git"
+  },
+  "keywords": [
+    "node",
+    "compile",
+    "bundle",
+    "nexe"
+  ],
+  "author": {
+    "name": "Igor Klopov",
+    "email": "igor@klopov.com"
+  },
+  "bugs": {
+    "url": "https://github.com/igorklopov/enclose/issues"
+  },
+  "homepage": "https://github.com/igorklopov/enclose",
+  "dependencies": {
+    "async": "^1.5.2"
+  },
+  "readme": "# EncloseJS\n\nCompile your Node.js project into an executable\n\n[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/igorklopov/enclose?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\n![Hello, world!](http://enclosejs.com/screenshot.png)\n\n### Use cases\n\n* Make a commercial version of your application without sources\n* Make a demo/evaluation/trial version of your app without sources\n* Make some kind of self-extracting archive or installer\n* Make a closed source GUI application using [node-thrust](https://github.com/breach/node-thrust)\n* No need to install Node.js and npm to deploy the compiled application\n* No need to download hundreds of files via `npm install` to deploy\nyour application. Deploy it as a single independent file\n* Put your assets inside the executable to make it even more portable\n* Test your app against new Node.js version without installing it\n\n### Install\n\n```\nnpm install -g enclose\n```\n\n### Usage\n\nRun `enclose` without arguments to see help.\n\nIn short, as input you specify the entry file of your project\n`/path/app.js`. As output you get a standalone executable\n`/path/app`. When it is run, it does the same as `node /path/app.js`\n\n### Command line of the executable\n\nCommand line call `./app a b` is equivalent to `node ./app.js a b`\n\n### Dependencies\n\nThe compiler parses your sources, detects calls to `require`, traverses\nthe dependencies of your project and includes them into the executable.\nYou don't need to list them manually.\n\n### Assets\n\nIf your project has assets (HTML templates, CSS, etc), for example to\nserve via HTTP, you can bundle them into the executable. Just list them\nas a [glob](https://github.com/sindresorhus/globby) in the configuration\nfile.\n\n### Compilation? Srsly?\n\nBoth Yes and No.\n\nYes. Because JavaScript code is transformed into native code at\ncompile-time using\n[V8 internal compiler](https://github.com/v8/v8-git-mirror/blob/master/src/compiler.cc).\nHence, your sources are not required to execute the binary, and they\nare not packaged.\n\nNo. Optimized native code can be generated only at run-time, using\ninformation collected at run-time. Without that information EncloseJS\ncan generate only \"unoptimized\" code. It runs about 2x slower, than\noptimized one.\n\nAlso, Node.js code is put inside the executable (along with your code)\nto support Node.js API for your application at run-time. This increases\noutput file size.\n\nSo, this is not that static compilation we used to know. But nevertheless\nyou get fully functional binary without sources. Also, performance and\nfile size overhead are vectors of future work.\n\n### Code protection?\n\nThe code protection is as strong as possible when the sources are\ncompiled to native code. Hackers will deal with\n[that push-mov stuff](https://github.com/v8/v8-git-mirror/blob/master/src/full-codegen/x87/full-codegen-x87.cc#L1110).\nNo need to obfuscate, no need to encrypt, no \"hidden\" decryption keys.\nAlso\n\n```\nmyfunc.toString()\nfunction myfunc() { [native code] }\n```\n\n### Versions of Node.js\n\nYou can choose what runtime version to wrap your project in -\n0.12.x, 4.2.x or 5.x.\n\n### Vanilla Node.js\n\nEncloseJS project does not aim to add new features to Node.js - to\navoid undesirable issues, to have predictable stability and to make\nNode.js native modules compatible with enclosed executables.\n\n### Fast\n\nIt takes seconds to make an executable. You don't need to build\nNode.js from sources in order to make the binary. EncloseJS is\nshipped with precompiled parts, ready for bundling.\n\n### Compatibility with non-enclosed run\n\nProjects like `npm`, `browserify`, `eslint` can be compiled using EncloseJS (see\n[examples directory](https://github.com/igorklopov/enclose/tree/master/examples/22-npm)).\nProbably, your existing project can be compiled too, with minimal\nadjustments. The adjustments preserve the ability to run you project\nvia `node ./app.js`\n\n### Platforms\n\nEncloseJS can build executables for Linux, Windows and Mac OS X.\nCross compilation is not currently supported, but will be supported in future.\n\n### Native modules\n\nNative modules (.node files) are supported for all platforms\n([more info](https://github.com/igorklopov/enclose/issues/12#issuecomment-82587865),\n[serialport example](https://github.com/igorklopov/enclose/tree/master/examples/24-serialport),\n[oracle example](https://github.com/igorklopov/enclose/tree/master/examples/25-oracle)).\n\n- EncloseJS cannot package a native module inside the executable.\n- You have to deploy your native modules along with your final executable.\n- On Windows, native modules (built with node-gyp) require executable\nname to be 'node.exe'. In order to make a module compatible with your\n'myserver.exe' EncloseJS makes a copy of the module, patches\nIAT of the copy (binds it to 'myserver.exe'), and then calls `dlopen`\nagainst the copy. This workaround will be deprecated soon.\n\n### License\n\nProprietary.\n",
+  "readmeFilename": "README.md",
+  "_id": "enclose@1.1.0",
+  "_shasum": "4b15fe521acdd606ce86cb2727f73ddae23d547b",
+  "_from": "enclose@",
+  "_resolved": "https://registry.npmjs.org/enclose/-/enclose-1.1.0.tgz"
+}
